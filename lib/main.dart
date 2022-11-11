@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodui/style.dart';
 import 'package:get/get.dart';
 import 'mainpage.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: const MainPage(),
     );

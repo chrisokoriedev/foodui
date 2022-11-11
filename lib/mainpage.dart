@@ -22,13 +22,13 @@ class MainPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              sizedHeight(60),
+              sizedHeight(40),
               const Icon(
                 FontAwesomeIcons.bowlRice,
                 size: 80,
                 color: kPrimaryColor,
               ),
-              sizedHeight(20),
+              sizedHeight(10),
               RichText(
                 textAlign: TextAlign.center,
                 text: const TextSpan(
@@ -47,7 +47,7 @@ class MainPage extends StatelessWidget {
                   ],
                 ),
               ),
-              sizedHeight(20),
+              sizedHeight(10),
               const Text(
                 'Start browsing the library of 10,000+ \nhealthly recipes today',
                 textAlign: TextAlign.center,
@@ -62,6 +62,12 @@ class MainPage extends StatelessWidget {
               button('Continue with Facebook', kWhiteColor),
               sizedHeight(10),
               button('Sign up', kPrimaryColor),
+              TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Have an account?',
+                    style: TextStyle(fontSize: 18),
+                  ))
             ],
           ),
         ),
@@ -69,12 +75,12 @@ class MainPage extends StatelessWidget {
     );
   }
 
-   button(String title, Color color) {
+  button(String title, Color color) {
     return InkWell(
-      onTap: () => Get.to(const HomePage()) ,
+      onTap: () => Get.to(const HomePage()),
       child: Container(
         width: 300,
-        height: 50,
+        height: 45,
         decoration: BoxDecoration(
           color: color,
           borderRadius: regularBorderRadius,
