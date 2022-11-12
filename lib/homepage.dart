@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                bottomMenu('Menu', FontAwesomeIcons.homeAlt),
+                bottomMenu('Menu', FontAwesomeIcons.house),
                 bottomMenu('Articles', FontAwesomeIcons.newspaper),
                 bottomMenu('List', FontAwesomeIcons.clipboard),
                 bottomMenu('Leftovers', FontAwesomeIcons.dumpster),
@@ -120,6 +120,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           iconData,
           color:
               iconData == FontAwesomeIcons.homeAlt ? kPrimaryColor : kGreyColor,
+          size: 18,
         ),
         sizedHeight(2),
         Text(
