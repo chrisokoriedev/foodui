@@ -15,7 +15,7 @@ List<RecipeData> getReciper = [
       title: 'Healthy chicken protien burger',
       duration: '25 mins',
       rating: 5.0,
-      imgDir: 'assets/e.jpg'),
+      imgDir: 'assets/g.jpg'),
   RecipeData(
       title: 'Healthy chicken protien burger',
       duration: '25 mins',
