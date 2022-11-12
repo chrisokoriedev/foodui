@@ -26,6 +26,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   font_awesome_flutter:
   get:
+  container_tab_indicator: 
 
 
 flutter:

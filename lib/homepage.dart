@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodui/recommendedComponent.dart';
 import 'package:foodui/style.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:container_tab_indicator/container_tab_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,86 +22,66 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: kDefaultPadding,
-        child: Column(
-          children: [
-            sizedHeight(20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Hello Chris',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.notifications_active_outlined,
-                      color: kPrimaryColor,
-                    ),
-                    sizedWidth(10),
-                    const FlutterLogo()
-                  ],
-                )
-              ],
-            ),
-            SizedBox(
-              height: 100,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: kWhiteColor,
-                ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: kDefaultPadding,
+          color: kGreyColor.withOpacity(0.1),
+          child: Column(
+            children: [
+              sizedHeight(20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Hello Chris',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.notifications_active_outlined,
+                        color: kPrimaryColor,
+                      ),
+                      sizedWidth(10),
+                      const FlutterLogo()
+                    ],
+                  )
+                ],
+              ),
+              sizedHeight(10),
+              SizedBox(
+                height: 100,
                 child: TabBar(
                     isScrollable: true,
-                    indicatorSize: TabBarIndicatorSize.label,
+                    indicatorSize: TabBarIndicatorSize.tab,
                     controller: _tabController,
-                    labelPadding: EdgeInsets.all(10),
+                    indicator: ContainerTabIndicator(
+                      width: 10,
+                      height: 10,
+                      color: kPrimaryColor,
+                      radius: BorderRadius.circular(100),
+                      padding: const EdgeInsets.only(top: 20),
+                    ),
                     tabs: [
-                      Column(
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.breadSlice,
-                            color: kPrimaryColor,
-                          ),
-                          Text(
-                            'All',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'Breakfast',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Text(
-                        'Lunch',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'snack',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Dinner',
-                        style: TextStyle(fontSize: 16),
-                      ),
+                      tabs('All', 'assets/breakfast.jpg'),
+                      tabs('Breakfast', 'assets/a.jpg'),
+                      tabs('Lunch', 'assets/lunch.jpg'),
+                      tabs('Snack', 'assets/e.jpg'),
+                      tabs('Dinner', 'assets/dinner.jpg'),
                     ]),
               ),
-            ),
-            SizedBox(
-              height: 220,
-              child: TabBarView(controller: _tabController, children: [
-                Container(),
-                Container(),
-                Container(),
-                Container(),
-                Container(),
-              ]),
-            ),
-          ],
+              SizedBox(
+                height: mediaQueryHeight,
+                child: TabBarView(controller: _tabController, children: [
+                  recommendRecipeWidget(),
+                  Container(),
+                  Container(),
+                  Container(),
+                  Container(),
+                ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
