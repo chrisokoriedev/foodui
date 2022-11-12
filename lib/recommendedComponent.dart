@@ -174,7 +174,7 @@ Column recommendRecipeWidget() {
         ],
       ),
       SizedBox(
-        height: mediaQueryHeight * 0.4 + 20,
+        height: mediaQueryHeight * 0.4 + 30,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: getReciper.length,

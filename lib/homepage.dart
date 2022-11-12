@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               SizedBox(
                 height: 100,
                 child: TabBar(
+                    physics: NeverScrollableScrollPhysics(),
                     isScrollable: true,
                     indicatorSize: TabBarIndicatorSize.tab,
                     controller: _tabController,
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ]),
               ),
               SizedBox(
-                height: mediaQueryHeight,
+                height: 900,
                 child: TabBarView(controller: _tabController, children: [
                   recommendRecipeWidget(),
                   Container(),
@@ -84,6 +85,48 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         ),
       ),
+      bottomSheet: Container(
+        width: mediaQueryWidth,
+        height: mediaQueryHeight * 0.1 - 10,
+        decoration: const BoxDecoration(
+            color: kWhiteColor,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20),
+              topLeft: Radius.circular(20),
+            )),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                bottomMenu('Menu', FontAwesomeIcons.homeAlt),
+                bottomMenu('Articles', FontAwesomeIcons.newspaper),
+                bottomMenu('List', FontAwesomeIcons.clipboard),
+                bottomMenu('Leftovers', FontAwesomeIcons.dumpster),
+                bottomMenu('Profile', FontAwesomeIcons.user),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column bottomMenu(String title, IconData iconData) {
+    return Column(
+      children: [
+        Icon(
+          iconData,
+          color:
+              iconData == FontAwesomeIcons.homeAlt ? kPrimaryColor : kGreyColor,
+        ),
+        sizedHeight(2),
+        Text(
+          title,
+          style: TextStyle(color: title == 'Menu' ? kPrimaryColor : kGreyColor),
+        ),
+      ],
     );
   }
 }
